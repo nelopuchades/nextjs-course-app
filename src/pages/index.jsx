@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import '../styles.module.css';
 
 const Page = () => (
     <div>
