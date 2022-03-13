@@ -1,8 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-const Page = () => {
-    const notes = new Array(15).fill(1).map((e, i) => ({ id: i, title: `Note: ${i}` }));
+export default ({ notes }) => {
     return (
         <div>
             <h1>Notes</h1>
@@ -19,4 +18,10 @@ const Page = () => {
     )
 };
 
-export default Page;
+export async function getServerSideProps() {
+    const res = await fetch(`http://localhost:3000/api/note/`);
+    const { data } = await res.json();
+    return {
+        props: { notes: data },
+    }
+}
