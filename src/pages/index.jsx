@@ -2,13 +2,22 @@ import React from 'react';
 import Link from 'next/link';
 import '../styles.module.css';
 
-const Page = () => (
+export default ({ content }) => (
     <div>
-        <h1>Index Page</h1>
+        <h1>{content.title}</h1>
         <Link href="/notes">
             <a>Link</a>
         </Link>
     </div>
 );
 
-export default Page;
+export function getStaticProps() {
+    // get data from CMS
+    return {
+        props: {
+            content: {
+                title: "This is my really nice app"
+            }
+        }
+    }
+}
